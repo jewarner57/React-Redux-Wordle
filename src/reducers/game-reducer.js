@@ -2,7 +2,7 @@ import {
   DELETE_LETTER, SUBMIT_WORD, RESTART, ADD_LETTER
 } from '../actions'
 
-const gameReducer = (state = { guesses: [], currentWord: '' }, action) => {
+const gameReducer = (state = { guesses: [], currentWord: '', answer: 'hello' }, action) => {
   let { guesses, currentWord } = state
 
   switch (action.type) {
@@ -28,7 +28,13 @@ const gameReducer = (state = { guesses: [], currentWord: '' }, action) => {
 
     case SUBMIT_WORD:
       // Submit the current word
-      return state
+      const newGuesses = guesses
+      let clearWord = currentWord
+      if (!guesses.includes(currentWord) && currentWord.length === 5) {
+        newGuesses.push(currentWord)
+        clearWord = ''
+      }
+      return { ...state, guesses: newGuesses, currentWord: clearWord }
 
     default:
       return state

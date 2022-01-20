@@ -38,7 +38,7 @@ function Game(props) {
   return (
     <div className='game'>
       {guesses.map((word, index) => {
-        return <Word letters={word.split('')} key={`${word}${index}`} />
+        return <Word letters={word.split('')} submitted={true} key={`${word}${index}`} />
       })}
 
       <Word letters={currentWord.split('')} />
