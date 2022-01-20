@@ -30,10 +30,12 @@ const gameReducer = (state = { guesses: [], currentWord: '', answer: 'hello' }, 
       // Submit the current word
       const newGuesses = guesses
       let clearWord = currentWord
+
       if (!guesses.includes(currentWord) && currentWord.length === 5) {
         newGuesses.push(currentWord)
         clearWord = ''
       }
+
       return { ...state, guesses: newGuesses, currentWord: clearWord }
 
     default:

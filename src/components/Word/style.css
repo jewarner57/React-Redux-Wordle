@@ -1,7 +1,7 @@
 .word {
   display: grid;
-  grid-template-columns: repeat(5, 56px);
-  grid-template-rows: 1fr;
-  grid-gap: 4px;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: 1 auto;
+  grid-gap: 8px;
   margin: 4px 0;
 }

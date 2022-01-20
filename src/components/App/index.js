@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
+        <h1 className='game-title'>WORDLE</h1>
         <Game />
       </Provider>
     </div>
