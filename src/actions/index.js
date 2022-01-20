@@ -1,9 +1,14 @@
 export const SUBMIT_WORD = "SUBMIT_WORD"
-export const CHANGE_WORD = "CHANGE_WORD"
+export const ADD_LETTER = "ADD_LETTER"
+export const DELETE_LETTER = "DELETE_LETTER"
 export const RESTART = "RESTART"
 
-export const changeWord = () => {
-  return { type: CHANGE_WORD }
+export const addLetter = (key) => {
+  return { type: ADD_LETTER, payload: key }
+}
+
+export const deleteLetter = () => {
+  return { type: DELETE_LETTER }
 }
 
 export const submit = () => {

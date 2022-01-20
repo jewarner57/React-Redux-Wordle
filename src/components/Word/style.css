@@ -1,0 +1,7 @@
+.word {
+  display: grid;
+  grid-template-columns: repeat(5, 56px);
+  grid-template-rows: 1fr;
+  grid-gap: 4px;
+  margin: 4px 0;
+}
