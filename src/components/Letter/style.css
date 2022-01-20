@@ -1,0 +1,26 @@
+.Letter {
+  max-width: 52px;
+  max-height: 52px;
+  width: 10vh;
+  height: 10vh;
+  border: 2px solid rgb(58, 58, 60);
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-gray {
+  background-color: rgb(53, 53, 53);
+}
+
+.letter-yellow {
+  background-color: #BF9F3B;
+}
+
+.letter-green {
+  background-color: #538D4E;
+}
