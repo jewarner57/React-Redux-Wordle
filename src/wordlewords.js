@@ -1,4 +1,4 @@
-aback
+const wordList = `aback
 abase
 abate
 abbey
@@ -129,7 +129,7 @@ avert
 avian
 avoid
 await
-awake
+  awake
 award
 aware
 awash
@@ -401,7 +401,7 @@ clank
 clash
 clasp
 class
-clean
+  clean
 clear
 cleat
 cleft
@@ -2312,4 +2312,5 @@ young
 youth
 zebra
 zesty
-zonal
+zonal`;
+export default wordList

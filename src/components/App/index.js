@@ -1,11 +1,11 @@
 import Game from '../Game';
 import './style.css';
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { createStore } from 'redux';
 import rootReducer from '../../reducers'
 
 function App() {
-  const store = createStore(rootReducer)
+  const store = createStore(rootReducer);
 
   return (
     <div className="App">

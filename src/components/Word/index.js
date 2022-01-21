@@ -1,7 +1,6 @@
 import Letter from '../Letter';
 import './style.css';
 import { useSelector } from 'react-redux';
-import { submit } from '../../actions';
 
 function Word(props) {
   const answer = useSelector(state => state.game.answer)

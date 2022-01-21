@@ -1,14 +1,12 @@
 import Word from '../Word'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { submit, addLetter, deleteLetter, restart } from '../../actions';
+import { submit, addLetter, deleteLetter } from '../../actions';
 import './style.css';
 
 function Game(props) {
   // get words from redux
-  const guesses = useSelector(state => state.game.guesses)
-  const currentWord = useSelector(state => state.game.currentWord)
-  const game = useSelector(state => state.game)
+  const { guesses, currentWord, gameOver } = useSelector(state => state.game)
   const dispatch = useDispatch()
 
   function isAlphaChar(char) {
@@ -16,27 +14,26 @@ function Game(props) {
   }
 
   useEffect(() => {
-    dispatch(restart())
-
     function handleKeyUp(event) {
+      if (!gameOver) {
+        if (event.key === 'Backspace') {
+          dispatch(deleteLetter())
+        }
 
-      if (event.key === 'Backspace') {
-        dispatch(deleteLetter())
-      }
+        if (event.key === 'Enter') {
+          dispatch(submit())
+        }
 
-      if (event.key === 'Enter') {
-        dispatch(submit())
-      }
-
-      // If it isnt a letter then ignore it
-      if (isAlphaChar(event.key)) {
-        dispatch(addLetter(event.key))
+        // If it isnt a letter then ignore it
+        if (isAlphaChar(event.key)) {
+          dispatch(addLetter(event.key))
+        }
       }
     }
 
     window.addEventListener("keyup", handleKeyUp);
     return () => window.removeEventListener("keyup", handleKeyUp);
-  }, [dispatch]);
+  }, [dispatch, gameOver]);
 
   return (
     <div className='game'>

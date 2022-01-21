@@ -1,14 +1,16 @@
 import {
-  DELETE_LETTER, SUBMIT_WORD, RESTART, ADD_LETTER
+  DELETE_LETTER, SUBMIT_WORD, SET_ANSWER, ADD_LETTER
 } from '../actions'
 
-const gameReducer = (state = { guesses: [], currentWord: '', answer: 'world' }, action) => {
-  let { guesses, currentWord } = state
+import { defaultState } from '../utils'
+
+const gameReducer = (state = defaultState(), action) => {
+  let { guesses, currentWord, answer, gameOver } = state
 
   switch (action.type) {
-    case RESTART:
+    case SET_ANSWER:
       // Clear all guesses
-      return state
+      return { ...state, answer: action.payload }
 
     case ADD_LETTER:
       // Add a letter to the current word
@@ -31,13 +33,15 @@ const gameReducer = (state = { guesses: [], currentWord: '', answer: 'world' }, 
       // Submit the current word
       const newGuesses = guesses
       let clearWord = currentWord
+      let complete = gameOver
 
       if (!guesses.includes(currentWord) && currentWord.length === 5) {
+        complete = currentWord.toLowerCase() === answer.toLowerCase()
         newGuesses.push(currentWord)
         clearWord = ''
       }
 
-      return { ...state, guesses: newGuesses, currentWord: clearWord }
+      return { ...state, guesses: newGuesses, currentWord: clearWord, gameOver: complete }
 
     default:
       return state
