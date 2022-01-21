@@ -2,12 +2,22 @@ import Word from '../Word'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { submit, addLetter, deleteLetter } from '../../actions';
+import Confetti from 'react-dom-confetti';
+
 import './style.css';
 
 function Game(props) {
   // get words from redux
   const { guesses, currentWord, gameOver } = useSelector(state => state.game)
   const dispatch = useDispatch()
+  const confetticonfig = {
+    spread: 360,
+    startVelocity: 40,
+    elementCount: 70,
+    dragFriction: 0.12,
+    duration: 3000,
+  };
+
 
   function isAlphaChar(char) {
     return (/[a-zA-Z]/).test(char) && char.length === 1
@@ -37,6 +47,7 @@ function Game(props) {
 
   return (
     <div className='game'>
+      <Confetti active={gameOver} config={confetticonfig} />
       {guesses.map((word, index) => {
         return <Word letters={word.split('')} submitted={true} key={`${word}${index}`} />
       })}
