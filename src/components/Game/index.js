@@ -1,14 +1,14 @@
 import Word from '../Word'
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { submit, addLetter, deleteLetter } from '../../actions';
+import { submit, addLetter, deleteLetter, restart } from '../../actions';
 import './style.css';
 
 function Game(props) {
   // get words from redux
   const guesses = useSelector(state => state.game.guesses)
   const currentWord = useSelector(state => state.game.currentWord)
-  const gameOver = useSelector(state => state.game)
+  const game = useSelector(state => state.game)
   const dispatch = useDispatch()
 
   function isAlphaChar(char) {
@@ -16,8 +16,9 @@ function Game(props) {
   }
 
   useEffect(() => {
+    dispatch(restart())
+
     function handleKeyUp(event) {
-      console.log(gameOver)
 
       if (event.key === 'Backspace') {
         dispatch(deleteLetter())
@@ -43,11 +44,11 @@ function Game(props) {
         return <Word letters={word.split('')} submitted={true} key={`${word}${index}`} />
       })}
 
-      <Word letters={currentWord.split('')} />
+      {5 - guesses.length >= 0 ? <Word letters={currentWord.split('')} /> : ''}
 
-      {[...Array(5 - guesses.length)].map((x, i) =>
+      {5 - guesses.length > 0 ? [...Array(5 - guesses.length)].map((x, i) =>
         <Word letters={'     '.split('')} key={`${x}${i}`} />
-      )}
+      ) : ''}
     </div>
   );
 }
