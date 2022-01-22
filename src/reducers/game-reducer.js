@@ -29,7 +29,7 @@ const gameReducer = (state = defaultState(), action) => {
       return { ...state, currentWord: deleteLetter }
 
     case SUBMIT_WORD:
-      if (guesses.length >= 6) return state
+      if (guesses.length >= 6) return { ...state, gameOver: true }
       // Submit the current word
       const newGuesses = guesses
       let clearWord = currentWord
@@ -41,7 +41,7 @@ const gameReducer = (state = defaultState(), action) => {
         clearWord = ''
       }
 
-      return { ...state, guesses: newGuesses, currentWord: clearWord, gameOver: complete }
+      return { ...state, guesses: newGuesses, currentWord: clearWord, win: complete, gameOver: complete }
 
     default:
       return state
