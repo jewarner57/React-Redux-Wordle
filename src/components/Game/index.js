@@ -6,6 +6,7 @@ import AnswerToast from '../AnswerToast';
 import Confetti from 'react-dom-confetti';
 
 import './style.css';
+import GithubLink from '../GithubLink';
 
 function Game(props) {
   // get words from redux
@@ -59,6 +60,10 @@ function Game(props) {
       {5 - guesses.length > 0 ? [...Array(5 - guesses.length)].map((x, i) =>
         <Word letters={'     '.split('')} key={`${x}${i}`} />
       ) : ''}
+
+      <div className='githublinkcontainer'>
+        <GithubLink link="https://github.com/jewarner57/React-Redux-Wordle" />
+      </div>
     </div>
   );
 }
