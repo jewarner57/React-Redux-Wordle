@@ -49,7 +49,7 @@ function Game(props) {
 
   return (
     <div className='game'>
-      <AnswerToast answer={answer} visible={guesses.length >= 6} />
+      <AnswerToast answer={answer} visible={guesses.length >= 6 && !win} />
       {guesses.map((word, index) => {
         return <Word letters={word.split('')} submitted={true} key={`${word}${index}`} />
       })}
