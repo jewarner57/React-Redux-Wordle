@@ -14,5 +14,13 @@
 - run ```npm install``` 
 - run ```npm run electron-dev```
 
+## Create a desktop build
+- ```git clone``` the repo
+- run ```npm install``` 
+- run ```npm run make```
+- To build the app with an icon: 
+```npx electron-icon-maker --input=/absolute/path/to/a/png --output=src```
+- Find the app build files in the out folder.
+
 ## Ideas and design based on:
 - [Wordle by Josh Wardle](https://www.powerlanguage.co.uk/wordle/)

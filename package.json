@@ -56,7 +56,10 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "src/icons/mac/icon.icns",
+        "name": "React Redux Wordle"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
